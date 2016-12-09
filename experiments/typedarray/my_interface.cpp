@@ -38,6 +38,12 @@ int8_t MyInterface::getData(const int32_t& offset) {
   return data_[offset];
 }
 
-Int8Array MyInterface::asInt8Array() {
-  return Int8Array(data_, 0, length_);
+HelperType MyInterface::asInt8Array() {
+  auto ret = HelperType(data_, 0, length_);
+  auto array(ret);
+  array = ret;
+  if (array == ret) {
+    return array;
+  }
+  return array;
 }
