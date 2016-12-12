@@ -5,7 +5,7 @@
 FakeImage::FakeImage() {
   length_ = 1024;
   data_ = new char[length_];
-  for (int i = 0 ; i < length_ ; ++ i) {
+  for (int i = 0 ; i < length_ ; ++i) {
     data_[i] = 0;
   }
 
@@ -20,8 +20,8 @@ FakeImage::~FakeImage() {
 }
 
 FakeImage& FakeImage::operator = (const FakeImage& rhs) {
-  if (&rhs != this) {
-  }
+  // if (&rhs != this) {
+  // }
   return *this;
 }
 
