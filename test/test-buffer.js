@@ -12,6 +12,19 @@ var path = require('path');
 
 var BufferTest;
 
+function bufToString(buf) {
+  return String.fromCharCode.apply(null, new Uint8Array(buf));
+}
+
+function stringToArrayBuffer(str) {
+  var buf = new ArrayBuffer(str.length);
+  var bufView = new Uint8Array(buf);
+  for (var i = 0, strLen = str.length; i < strLen; ++i) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
+}
+
 describe('widl-nan Unit Test - Buffer', function() {
   it('Generating binding C++ code', function() {
     return compile([
@@ -38,20 +51,27 @@ describe('widl-nan Unit Test - Buffer', function() {
 
   it('Method returning an ArrayBuffer', done => {
     var bufferTest = new BufferTest();
-    assert.equal(bufferTest.getArrayBuffer().toString(), 'hello world!');
+    assert.equal(bufToString(bufferTest.getArrayBuffer()), 'hello world!');
+    done();
+  });
+
+  it('Static method returning an ArrayBuffer', done => {
+    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
+    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
+    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
     done();
   });
 
   it('Object property as ArrayBuffer', done => {
     var bufferTest = new BufferTest();
-    assert.equal(bufferTest.data.toString(), 'hello world!');
+    assert.equal(bufToString(bufferTest.data), 'hello world!');
     done();
   });
 
   it('Passing ArrayBuffer as paramter', done => {
     var bufferTest = new BufferTest();
-    const buffer = new Buffer('This is node Buffer');
-    assert.equal(bufferTest.buffer2String(buffer), 'This is node Buffer');
+    const buffer = stringToArrayBuffer('Array buffer string test...');
+    assert.equal(bufferTest.buffer2String(buffer), 'Array buffer string test...');
     done();
   });
 });

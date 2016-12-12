@@ -12,16 +12,12 @@ Buffer::Buffer() {
 Buffer::~Buffer() {
 }
 
-ArrayBuffer Buffer::getArrayBuffer() const {
-  const char* text = "hello world!";
+ArrayBufferHelper Buffer::getArrayBuffer() const {
+  char* text = "hello world!";
+  return ArrayBufferHelper(text, strlen(text));
+}
 
-  uint32_t size = strlen(text);
-  // Use malloc to allocate memory for node array buffer.
-  char* buf = reinterpret_cast<char*>(malloc(size));
-  memcpy(buf, text, size);
-
-  ArrayBuffer arrayBuffer;
-  arrayBuffer.data = buf;
-  arrayBuffer.size = size;
-  return arrayBuffer;
+ArrayBufferHelper Buffer::getCommonData() {
+  static char* raw_buf = "static buffer test data";
+  return ArrayBufferHelper(raw_buf, strlen(raw_buf));
 }
