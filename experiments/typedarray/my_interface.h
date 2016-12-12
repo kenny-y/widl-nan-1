@@ -16,7 +16,7 @@ class TypedArrayHelper {
  public:
   typedef T typed_array_t;
 
-  TypedArrayHelper(void* data, int32_t offset, int32_t length, bool external = true) {
+  TypedArrayHelper(void* data, uint32_t offset, uint32_t length, bool external = true) {
     data_ = data;
     offset_ = offset;
     length_ = length;
@@ -67,6 +67,11 @@ class TypedArrayHelper {
     return true;
   }
 
+  void* GetData() { return data_; }
+  uint32_t GetOffset() { return offset_; }
+  uint32_t GetLength() { return length_; }
+  bool IsExternalBuffer() { return external_buffer_; }
+
  private:
   void CopyFrom(const TypedArrayHelper& rhs) {
     if (this != &rhs) {
@@ -79,12 +84,12 @@ class TypedArrayHelper {
 
  private:
   void* data_;
-  int32_t offset_;
-  int32_t length_;
+  uint32_t offset_;
+  uint32_t length_;
   bool external_buffer_;
 };
 
-typedef TypedArrayHelper<v8::Int8Array> HelperType;
+typedef TypedArrayHelper<v8::Int8Array> Int8ArrayHelper;
 
 class MyInterface {
  public:
@@ -105,7 +110,7 @@ class MyInterface {
 
   int8_t getData(const int32_t& offset);
 
-  HelperType asInt8Array();
+  Int8ArrayHelper asInt8Array();
 
   void SetJavaScriptThis(v8::Local<v8::Object> obj) {
     // Ignore this if you don't need it
