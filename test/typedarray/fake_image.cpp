@@ -3,69 +3,76 @@
 #include "fake_image.h"
 
 FakeImage::FakeImage() {
-  // TODO(widl-nan): init your members
+  length_ = 1024;
+  data_ = new char[length_];
+  for (int i = 0 ; i < length_ ; ++ i) {
+    data_[i] = 0;
+  }
+
+  rawBuffer_.Set(data_, 0, 1024);
 }
 
 FakeImage::FakeImage(const FakeImage& rhs) {
-  // TODO(widl-nan): copy from rhs if you want this behavior
-  // Or mark ctor = delete in fake_image.h
 }
 
 FakeImage::~FakeImage() {
-  // TODO(widl-nan): do cleanup if necessary
+  delete data_;
 }
 
 FakeImage& FakeImage::operator = (const FakeImage& rhs) {
   if (&rhs != this) {
-    // TODO(widl-nan): copy members from rhs
   }
   return *this;
 }
 
-void FakeImage::setData(const int32_t& offset, const int8_t& data) {
-  // TODO(widl-nan): fill your code here
+void FakeImage::setData(const uint32_t& offset, const uint8_t& data) {
+  if (offset < length_) {
+    data_[offset] = data;
+  }
 }
 
-int8_t FakeImage::getData(const int32_t& offset) {
-  // TODO(widl-nan): fill your code here
+int8_t FakeImage::getData(const uint32_t& offset) {
+  if (offset < length_) {
+    return data_[offset];
+  }
 }
 
 Int8ArrayHelper FakeImage::asInt8Array() {
-  // TODO(widl-nan): fill your code here
+  return Int8ArrayHelper(data_, 0, length_);
 }
 
-Uint8ArrayHelper FakeImage::asUin86Array() {
-  // TODO(widl-nan): fill your code here
+Uint8ArrayHelper FakeImage::asUint8Array() {
+  return Uint8ArrayHelper(data_, 0, length_);
 }
 
 Uint8ClampedArrayHelper FakeImage::asUint8ClampedArray() {
-  // TODO(widl-nan): fill your code here
+  return Uint8ClampedArrayHelper(data_, 0, length_);
 }
 
 Int16ArrayHelper FakeImage::asInt16Array() {
-  // TODO(widl-nan): fill your code here
+  return Int16ArrayHelper(data_, 0, length_ / 2);
 }
 
 Uint16ArrayHelper FakeImage::asUint16Array() {
-  // TODO(widl-nan): fill your code here
+  return Uint16ArrayHelper(data_, 0, length_ / 2);
 }
 
 Int32ArrayHelper FakeImage::asInt32Array() {
-  // TODO(widl-nan): fill your code here
+  return Int32ArrayHelper(data_, 0, length_ / 4);
 }
 
 Uint32ArrayHelper FakeImage::asUint32Array() {
-  // TODO(widl-nan): fill your code here
+  return Uint32ArrayHelper(data_, 0, length_ / 4);
 }
 
 Float32ArrayHelper FakeImage::asFloat32Array() {
-  // TODO(widl-nan): fill your code here
+  return Float32ArrayHelper(data_, 0, length_ / 4);
 }
 
 Float64ArrayHelper FakeImage::asFloat64Array() {
-  // TODO(widl-nan): fill your code here
+  return Float64ArrayHelper(data_, 0, length_ / 8);
 }
 
 Float32ArrayHelper FakeImage::getStaticArray() {
-  // TODO(widl-nan): fill your code here
+  return Float32ArrayHelper(nullptr, 0, 0);
 }

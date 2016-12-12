@@ -26,17 +26,17 @@ class FakeImage {
     return this->rawBuffer_;
   }
 
-  int32_t get_length() const {
+  uint32_t get_length() const {
     return this->length_;
   }
 
-  void setData(const int32_t& offset, const int8_t& data);
+  void setData(const uint32_t& offset, const uint8_t& data);
 
-  int8_t getData(const int32_t& offset);
+  int8_t getData(const uint32_t& offset);
 
   Int8ArrayHelper asInt8Array();
 
-  Uint8ArrayHelper asUin86Array();
+  Uint8ArrayHelper asUint8Array();
 
   Uint8ClampedArrayHelper asUint8ClampedArray();
 
@@ -62,7 +62,8 @@ class FakeImage {
  private:
   Uint8ArrayHelper rawBuffer_;
 
-  int32_t length_;
+  uint32_t length_;
+  char* data_;
 };
 
 #endif  // _FAKE_IMAGE_H_

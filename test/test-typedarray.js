@@ -34,6 +34,35 @@ describe('widl-nan Unit Test - sequence<T> as Array', function() {
   });
 
   it('Test TypedArray as property', done => {
+    var obj = new FakeImage();
+    assert(obj.rawBuffer instanceof Uint8Array);
+    assert.equal(obj.rawBuffer.length, obj.length);
+    done();
+  });
+
+  it('Test TypedArray as method', done => {
+    var obj = new FakeImage();
+
+    assert(obj.asInt8Array() instanceof Int8Array);
+    assert.equal(obj.asInt8Array().length, obj.length);
+    assert(obj.asUint8Array() instanceof Uint8Array);
+    assert.equal(obj.asUint8Array().length, obj.length);
+
+    assert(obj.asInt16Array() instanceof Int16Array);
+    assert.equal(obj.asInt16Array().length, obj.length / 2);
+    assert(obj.asUint16Array() instanceof Uint16Array);
+    assert.equal(obj.asUint16Array().length, obj.length / 2);
+
+    assert(obj.asInt32Array() instanceof Int32Array);
+    assert.equal(obj.asInt32Array().length, obj.length / 4);
+    assert(obj.asUint32Array() instanceof Uint32Array);
+    assert.equal(obj.asUint32Array().length, obj.length / 4);
+
+    assert(obj.asFloat32Array() instanceof Float32Array);
+    assert.equal(obj.asFloat32Array().length, obj.length / 4);
+    assert(obj.asFloat64Array() instanceof Float64Array);
+    assert.equal(obj.asFloat64Array().length, obj.length / 8);
+
     done();
   });
 });

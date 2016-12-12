@@ -3,13 +3,13 @@ Constructor
 ]
 interface FakeImage {
   readonly attribute Uint8Array rawBuffer;
-  readonly attribute long length;
+  readonly attribute unsigned long length;
 
-  void setData(long offset, byte data);
-  byte getData(long offset);
+  void setData(unsigned long offset, byte data);
+  byte getData(unsigned long offset);
 
   Int8Array asInt8Array();
-  Uint8Array asUin86Array();
+  Uint8Array asUint8Array();
   Uint8ClampedArray asUint8ClampedArray();
 
   Int16Array asInt16Array();
