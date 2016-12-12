@@ -22,7 +22,7 @@ class FakeImage {
   FakeImage& operator = (const FakeImage& rhs);
 
  public:
-  Uint8Array get_rawBuffer() const {
+  Uint8ArrayHelper get_rawBuffer() const {
     return this->rawBuffer_;
   }
 
@@ -34,23 +34,25 @@ class FakeImage {
 
   int8_t getData(const int32_t& offset);
 
-  Int8Array asInt8Array();
+  Int8ArrayHelper asInt8Array();
 
-  Uint8Array asUin86Array();
+  Uint8ArrayHelper asUin86Array();
 
-  Uint8ClampedArray asUint8ClampedArray();
+  Uint8ClampedArrayHelper asUint8ClampedArray();
 
-  Int16Array asInt16Array();
+  Int16ArrayHelper asInt16Array();
 
-  Uint16Array asUint16Array();
+  Uint16ArrayHelper asUint16Array();
 
-  Int32Array asInt32Array();
+  Int32ArrayHelper asInt32Array();
 
-  Uint32Array asUint16Array();
+  Uint32ArrayHelper asUint32Array();
 
-  Float32Array asFloat32Array();
+  Float32ArrayHelper asFloat32Array();
 
-  Float64Array asFloat64Array();
+  Float64ArrayHelper asFloat64Array();
+
+  static Float32ArrayHelper getStaticArray();
 
   void SetJavaScriptThis(v8::Local<v8::Object> obj) {
     // Ignore this if you don't need it
@@ -58,7 +60,7 @@ class FakeImage {
   }
 
  private:
-  Uint8Array rawBuffer_;
+  Uint8ArrayHelper rawBuffer_;
 
   int32_t length_;
 };

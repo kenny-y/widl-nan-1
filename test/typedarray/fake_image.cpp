@@ -30,39 +30,42 @@ int8_t FakeImage::getData(const int32_t& offset) {
   // TODO(widl-nan): fill your code here
 }
 
-Int8Array FakeImage::asInt8Array() {
+Int8ArrayHelper FakeImage::asInt8Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Uint8Array FakeImage::asUin86Array() {
+Uint8ArrayHelper FakeImage::asUin86Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Uint8ClampedArray FakeImage::asUint8ClampedArray() {
+Uint8ClampedArrayHelper FakeImage::asUint8ClampedArray() {
   // TODO(widl-nan): fill your code here
 }
 
-Int16Array FakeImage::asInt16Array() {
+Int16ArrayHelper FakeImage::asInt16Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Uint16Array FakeImage::asUint16Array() {
+Uint16ArrayHelper FakeImage::asUint16Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Int32Array FakeImage::asInt32Array() {
+Int32ArrayHelper FakeImage::asInt32Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Uint32Array FakeImage::asUint16Array() {
+Uint32ArrayHelper FakeImage::asUint32Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Float32Array FakeImage::asFloat32Array() {
+Float32ArrayHelper FakeImage::asFloat32Array() {
   // TODO(widl-nan): fill your code here
 }
 
-Float64Array FakeImage::asFloat64Array() {
+Float64ArrayHelper FakeImage::asFloat64Array() {
   // TODO(widl-nan): fill your code here
 }
 
+Float32ArrayHelper FakeImage::getStaticArray() {
+  // TODO(widl-nan): fill your code here
+}

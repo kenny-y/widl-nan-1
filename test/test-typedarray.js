@@ -10,8 +10,8 @@ var buildAddon = require('../lib/addon-builder.js').buildAddon;
 var compile = require('../lib/compile.js').compile;
 var path = require('path');
 
-var Canvas = null;
-var Point = null;
+var FakeImage = null;
+
 describe('widl-nan Unit Test - sequence<T> as Array', function() {
   it('Generating binding C++ code', function() {
     return compile('test/typedarray/typedarray.widl', 'test/typedarray/gen');
@@ -29,9 +29,8 @@ describe('widl-nan Unit Test - sequence<T> as Array', function() {
     var addon = require('bindings')(
         // eslint-disable-next-line camelcase
         {bindings: 'widlNanAddon', module_root: addonDir});
-    Canvas = addon.Canvas;
-    Point = addon.Point;
-    assert.equal(typeof Canvas, 'function');
+    FakeImage = addon.FakeImage;
+    assert.equal(typeof FakeImage, 'function');
   });
 
   it('Test TypedArray as property', done => {

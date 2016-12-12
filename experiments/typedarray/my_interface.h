@@ -90,6 +90,18 @@ class TypedArrayHelper {
 };
 
 typedef TypedArrayHelper<v8::Int8Array> Int8ArrayHelper;
+typedef TypedArrayHelper<v8::Uint8Array> Uint8ArrayHelper;
+typedef TypedArrayHelper<v8::Uint8ClampedArray> Uint8ClampedArrayHelper;
+
+typedef TypedArrayHelper<v8::Int16Array> Int16ArrayHelper;
+typedef TypedArrayHelper<v8::Uint16Array> Uint16ArrayHelper;
+
+typedef TypedArrayHelper<v8::Int32Array> Int32ArrayHelper;
+typedef TypedArrayHelper<v8::Uint32Array> Uint32ArrayHelper;
+
+typedef TypedArrayHelper<v8::Float32Array> Float32ArrayHelper;
+typedef TypedArrayHelper<v8::Float64Array> Float64ArrayHelper;
+
 
 class MyInterface {
  public:

@@ -70,6 +70,8 @@ class Line {
 
   static Point* intersectionPoint(const Line& lineA, const Line& lineB);
 
+  static int32_t worldWidth();
+
   void offset(const Point& pt);
 
   void SetJavaScriptThis(v8::Local<v8::Object> obj) {

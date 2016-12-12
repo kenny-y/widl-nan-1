@@ -38,6 +38,10 @@ Point* Line::intersectionPoint(const Line& lineA, const Line& lineB) {
   return new Point(120, 0);
 }
 
+int32_t Line::worldWidth() {
+  return 32768;
+}
+
 void Line::offset(const Point& pt) {
 }
 

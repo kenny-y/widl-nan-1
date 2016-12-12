@@ -16,8 +16,10 @@ interface FakeImage {
   Uint16Array asUint16Array();
 
   Int32Array asInt32Array();
-  Uint32Array asUint16Array();
+  Uint32Array asUint32Array();
 
   Float32Array asFloat32Array();
   Float64Array asFloat64Array();
+
+  static Float32Array getStaticArray();
 };

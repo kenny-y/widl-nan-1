@@ -25,5 +25,7 @@ interface Line {
   static attribute DOMString createdBy;
   static attribute Point whateverPoint;
   static Point intersectionPoint(Line lineA, Line lineB);
+  static long worldWidth();
+
   void offset(Point pt);
 };
