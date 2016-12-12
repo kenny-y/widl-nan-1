@@ -65,4 +65,22 @@ describe('widl-nan Unit Test - sequence<T> as Array', function() {
 
     done();
   });
+
+  it('Test TypedArray as static method and empty TypedArray', done => {
+    var array = FakeImage.getStaticArray();
+    assert(array instanceof Float32Array);
+    assert.equal(array.length, 0);
+    done();
+  });
+
+  it('Test TypedArray read/write', done => {
+    var obj = new FakeImage();
+    var array = obj.asUint8Array();
+    array[874] = 64;
+    assert.equal(64, obj.getData(874));
+
+    obj.setData(874, 233);
+    assert.equal(array[874], 233);
+    done();
+  });
 });
