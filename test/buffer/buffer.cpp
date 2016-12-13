@@ -7,6 +7,7 @@
 #include <string.h>
 
 Buffer::Buffer() {
+  data_ = "hello world!";
 }
 
 Buffer::~Buffer() {

@@ -10,7 +10,7 @@ var buildAddon = require('../lib/addon-builder.js').buildAddon;
 var compile = require('../lib/compile.js').compile;
 var path = require('path');
 
-var BufferTest;
+var Buffer;
 
 function bufToString(buf) {
   return String.fromCharCode.apply(null, new Uint8Array(buf));
@@ -45,33 +45,35 @@ describe('widl-nan Unit Test - Buffer', function() {
         // eslint-disable-next-line camelcase
         {bindings: 'testerAddon', module_root: addonDir});
 
-    BufferTest = addon.Buffer;
-    assert.equal(typeof BufferTest, 'function');
+    Buffer = addon.Buffer;
+    assert.equal(typeof Buffer, 'function');
   });
 
   it('Method returning an ArrayBuffer', done => {
-    var bufferTest = new BufferTest();
-    assert.equal(bufToString(bufferTest.getArrayBuffer()), 'hello world!');
+    var buf = new Buffer();
+    assert.equal(bufToString(buf.getArrayBuffer()), 'hello world!');
     done();
   });
 
   it('Static method returning an ArrayBuffer', done => {
-    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
-    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
-    assert.equal(bufToString(BufferTest.getCommonData()), 'static buffer test data');
+    assert.equal(bufToString(Buffer.getCommonData()), 'static buffer test data');
+    assert.equal(bufToString(Buffer.getCommonData()), 'static buffer test data');
+    assert.equal(bufToString(Buffer.getCommonData()), 'static buffer test data');
     done();
   });
 
   it('Object property as ArrayBuffer', done => {
-    var bufferTest = new BufferTest();
-    assert.equal(bufToString(bufferTest.data), 'hello world!');
+    var buf = new Buffer();
+    assert.equal(bufToString(buf.data), 'hello world!');
+    buf.data = stringToArrayBuffer('hello universe!');
+    assert.equal(bufToString(buf.data), 'hello universe!');
     done();
   });
 
   it('Passing ArrayBuffer as paramter', done => {
-    var bufferTest = new BufferTest();
+    var buf = new Buffer();
     const buffer = stringToArrayBuffer('Array buffer string test...');
-    assert.equal(bufferTest.buffer2String(buffer), 'Array buffer string test...');
+    assert.equal(buf.buffer2String(buffer), 'Array buffer string test...');
     done();
   });
 });

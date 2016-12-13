@@ -21,10 +21,12 @@ class Buffer {
   ArrayBufferHelper getArrayBuffer() const;
 
   ArrayBufferHelper get_data() const {
-    return getArrayBuffer();
+    return ArrayBufferHelper((void*)data_.c_str(), data_.length());
   }
 
-  void set_data(const ArrayBufferHelper& new_value) {
+  void set_data(const ArrayBufferHelper& buffer) {
+    data_ = std::string((const char*)buffer.GetData(),
+      buffer.GetLength());
   }
 
   std::string buffer2String(const ArrayBufferHelper& arrayBuffer) {
@@ -35,6 +37,7 @@ class Buffer {
   static ArrayBufferHelper getCommonData();
 
  private:
+  std::string data_;
 };
 
 #endif  // _BUFFER_H_
