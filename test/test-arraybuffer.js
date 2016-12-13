@@ -28,19 +28,19 @@ function stringToArrayBuffer(str) {
 describe('widl-nan Unit Test - Buffer', function() {
   it('Generating binding C++ code', function() {
     return compile([
-      'test/buffer/buffer.widl'
-    ], 'test/buffer/gen');
+      'test/arraybuffer/arraybuffer.widl'
+    ], 'test/arraybuffer/gen');
   });
 
   it('Building addon', function() {
     // building addon maybe slow
     this.timeout(100000);
 
-    return buildAddon('test/buffer');
+    return buildAddon('test/arraybuffer');
   });
 
   it('Loading addon', function() {
-    var addonDir = path.join(path.dirname(__filename), 'buffer');
+    var addonDir = path.join(path.dirname(__filename), 'arraybuffer');
     var addon = require('bindings')(
         // eslint-disable-next-line camelcase
         {bindings: 'testerAddon', module_root: addonDir});
